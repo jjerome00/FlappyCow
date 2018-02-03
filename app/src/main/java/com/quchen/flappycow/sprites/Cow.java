@@ -33,7 +33,7 @@ public class Cow extends PlayableCharacter {
     public Cow(GameView view, Game game) {
         super(view, game);
         if(globalBitmap == null){
-            globalBitmap = Util.getScaledBitmapAlpha8(game, R.drawable.cow);
+            globalBitmap = Util.getScaledBitmapAlpha8(game, R.drawable.bird);
         }
         this.bitmap = globalBitmap;
         this.width = this.bitmap.getWidth()/(colNr = 8);    // The image has 8 frames in a row
@@ -42,7 +42,7 @@ public class Cow extends PlayableCharacter {
         this.y = game.getResources().getDisplayMetrics().heightPixels / 2;    // Startposition in in the middle of the screen
         
         if(sound == -1){
-            sound = Game.soundPool.load(game, R.raw.cow, 1);
+            sound = Game.soundPool.load(game, R.raw.sfx_wing, 1);
         }
         
         this.accessory = new Accessory(view, game);
@@ -112,11 +112,7 @@ public class Cow extends PlayableCharacter {
     @Override
     public void upgradeBitmap(int points) {
         super.upgradeBitmap(points);
-        if(points == POINTS_TO_SIR){
-            this.accessory.setBitmap(Util.getScaledBitmapAlpha8(game, R.drawable.accessory_sir));
-        }else if(points == POINTS_TO_COOL){
-            this.accessory.setBitmap(Util.getScaledBitmapAlpha8(game, R.drawable.accessory_sunglasses));
-        }
+        //ignore upgrades
     }
     
 }

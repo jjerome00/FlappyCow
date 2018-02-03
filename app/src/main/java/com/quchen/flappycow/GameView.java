@@ -18,6 +18,7 @@ import com.quchen.flappycow.sprites.Background;
 import com.quchen.flappycow.sprites.Coin;
 import com.quchen.flappycow.sprites.Cow;
 import com.quchen.flappycow.sprites.Frontground;
+import com.quchen.flappycow.sprites.GhostBird;
 import com.quchen.flappycow.sprites.NyanCat;
 import com.quchen.flappycow.sprites.Obstacle;
 import com.quchen.flappycow.sprites.PauseButton;
@@ -60,6 +61,9 @@ public class GameView extends SurfaceView{
     
     private Tutorial tutorial;
     private boolean tutorialIsShown = true;
+
+    private boolean ignoreNextClick = false;    // used if we go too high
+    boolean isGhostBird = false;                // used if we collide with a pipe
 
     public GameView(Context context) {
         super(context);
@@ -121,7 +125,12 @@ public class GameView extends SurfaceView{
             }else if(pauseButton.isTouching((int) event.getX(), (int) event.getY()) && !this.paused){
                 pause();
             }else{
-                this.player.onTap();
+                // if we have hit the sky, ignore a click so we'll float down onto the screen.
+                if (!ignoreNextClick) {
+                    this.player.onTap();
+                } else {
+                    ignoreNextClick = false;
+                }
             }
         }
         return true;
@@ -271,15 +280,21 @@ public class GameView extends SurfaceView{
      * Creates a toast with a certain chance
      */
     private void createPowerUp(){
-        // Toast
-        if(game.accomplishmentBox.points >= Toast.POINTS_TO_TOAST /*&& powerUps.size() < 1*/ && !(player instanceof NyanCat)){
-            // If no powerUp is present and you have more than / equal 42 points
-            if(game.accomplishmentBox.points == Toast.POINTS_TO_TOAST){    // First time 100 % chance
-                powerUps.add(new Toast(this, game));
-            } else if(Math.random()*100 < 33){    // 33% chance
-                powerUps.add(new Toast(this, game));
-            }
+
+        if(game.accomplishmentBox.points == 3) {
+//            game.handler.sendMessage(Message.obtain(game.handler,1,R.string.toast_achievement_toastification, MyHandler.SHOW_TOAST));
+            gameOver();
         }
+
+//        // Toast
+//        if(game.accomplishmentBox.points >= Toast.POINTS_TO_TOAST /*&& powerUps.size() < 1*/ && !(player instanceof NyanCat)){
+//            // If no powerUp is present and you have more than / equal 42 points
+//            if(game.accomplishmentBox.points == Toast.POINTS_TO_TOAST){    // First time 100 % chance
+//                powerUps.add(new Toast(this, game));
+//            } else if(Math.random()*100 < 33){    // 33% chance
+//                powerUps.add(new Toast(this, game));
+//            }
+//        }
         
         if((powerUps.size() < 1) && (Math.random()*100 < 20)){
             // If no powerUp is present and 20% chance
@@ -304,15 +319,25 @@ public class GameView extends SurfaceView{
             }
         }
     }
-    
+
     /**
      * Checks collisions and performs the action
      */
     private void checkCollision(){
+
+        // if we are already a ghost bird, switch us back to a regular bird
+        if (isGhostBird) {
+            changeToBird();
+            isGhostBird = false;
+        }
+
+        // if we've collided with something, show the ghost bird
         for(Obstacle o : obstacles){
             if(o.isColliding(player)){
                 o.onCollision();
-                gameOver();
+                changeToGhostBird();
+                isGhostBird = true;
+                //gameOver();
             }
         }
         for(int i=0; i<powerUps.size(); i++){
@@ -322,8 +347,13 @@ public class GameView extends SurfaceView{
                 i--;
             }
         }
-        if(player.isTouchingEdge()){
-            gameOver();
+
+        if (player.isTouchingGround()) {
+            this.player.onTap();
+        }
+        if (player.isTouchingSky()) {
+            // ignoring one click should keep you from getting lost in the sky
+            ignoreNextClick = true;
         }
     }
     
@@ -377,8 +407,26 @@ public class GameView extends SurfaceView{
         this.player.setSpeedX(tmp.getSpeedX());
         this.player.setSpeedY(tmp.getSpeedY());
         
-        game.musicShouldPlay = true;
-        Game.musicPlayer.start();
+//        game.musicShouldPlay = true;
+//        Game.musicPlayer.start();
+    }
+
+    public void changeToGhostBird() {
+        PlayableCharacter tmp = this.player;
+        this.player = new GhostBird(this, game);
+        this.player.setX(tmp.getX());
+        this.player.setY(tmp.getY());
+        this.player.setSpeedX(tmp.getSpeedX());
+        this.player.setSpeedY(tmp.getSpeedY());
+    }
+
+    public void changeToBird() {
+        PlayableCharacter tmp = this.player;
+        this.player = new Cow(this, game);
+        this.player.setX(tmp.getX());
+        this.player.setY(tmp.getY());
+        this.player.setSpeedX(tmp.getSpeedX());
+        this.player.setSpeedY(tmp.getSpeedY());
     }
     
     /**

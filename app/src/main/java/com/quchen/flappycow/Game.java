@@ -91,7 +91,7 @@ public class Game extends BaseGameActivity{
             setupAd();
         }
     }
-    
+
 
     /**
      * Initializes the player with the nyan cat song
@@ -105,6 +105,24 @@ public class Game extends BaseGameActivity{
             musicPlayer.setVolume(MainActivity.volume, MainActivity.volume);
         }
         musicPlayer.seekTo(0);    // Reset song to position 0
+    }
+
+    // meant to only play once
+    public void playNyanCat() {
+        musicPlayer = MediaPlayer.create(this, R.raw.nyan_cat_theme);
+        musicPlayer.setLooping(true);
+        musicPlayer.setVolume(MainActivity.volume, MainActivity.volume);
+        musicPlayer.seekTo(0);    // Reset song to position 0
+        musicPlayer.start();
+    }
+
+    // meant to only play one time (in GameOverDialog)
+    public void playTada() {
+        musicPlayer = MediaPlayer.create(this, R.raw.tada);
+        musicPlayer.setLooping(false);
+        musicPlayer.setVolume(MainActivity.volume, MainActivity.volume);
+        musicPlayer.seekTo(0);
+        musicPlayer.start();
     }
     
     private void loadCoins(){
@@ -159,12 +177,7 @@ public class Game extends BaseGameActivity{
      * Because it needs an UI thread.
      */
     public void gameOver(){
-        if(gameOverCounter % GAMES_PER_AD == 0) {
-            handler.sendMessage(Message.obtain(handler, MyHandler.SHOW_AD));
-        } else {
-            handler.sendMessage(Message.obtain(handler, MyHandler.GAME_OVER_DIALOG));
-        }
-        
+        handler.sendMessage(Message.obtain(handler, MyHandler.GAME_OVER_DIALOG));
     }
     
     public void increaseCoin(){

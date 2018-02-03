@@ -47,7 +47,7 @@ public class NyanCat extends PlayableCharacter {
         super.move();
         
         if(rainbow != null){
-            manageRainbowMovement();            
+            manageRainbowMovement();
         }
     }
     

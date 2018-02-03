@@ -28,12 +28,12 @@ public class Obstacle extends Sprite{
         super(view, game);
         spider = new Spider(view, game);
         log = new WoodLog(view, game);
-        
+
         if(collideSound == -1){
-            collideSound = Game.soundPool.load(game, R.raw.crash, 1);
+            collideSound = Game.soundPool.load(game, R.raw.ghost, 1);
         }
         if(passSound == -1){
-            passSound = Game.soundPool.load(game, R.raw.pass, 1);
+            passSound = Game.soundPool.load(game, R.raw.sfx_point, 1);
         }
         
         initPos();

@@ -25,7 +25,7 @@ public class Spider extends Sprite {
     public Spider(GameView view, Game game) {
         super(view, game);
         if(globalBitmap == null){
-            globalBitmap = Util.getScaledBitmapAlpha8(game, R.drawable.spider_full);
+            globalBitmap = Util.getScaledBitmapAlpha8(game, R.drawable.pipe_top);
         }
         this.bitmap = globalBitmap;
         this.width = this.bitmap.getWidth();

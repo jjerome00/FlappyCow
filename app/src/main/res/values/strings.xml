@@ -31,4 +31,7 @@
     <string name="toast_achievement_bronze">Achievement unlocked: Bronze</string>
     <string name="toast_achievement_silver">Achievement unlocked: Silver</string>
     <string name="toast_achievement_gold">Achievement unlocked: Gold</string>
+
+    <string name="you_win">YOU WIN!</string>
+    <string name="more_music">MOAR MUSIC!</string>
 </resources>

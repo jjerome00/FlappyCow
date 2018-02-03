@@ -24,7 +24,7 @@ public class WoodLog extends Sprite {
     public WoodLog(GameView view, Game game) {
         super(view, game);
         if(globalBitmap == null){
-            globalBitmap = Util.getScaledBitmapAlpha8(game, R.drawable.log_full);
+            globalBitmap = Util.getScaledBitmapAlpha8(game, R.drawable.pipe_bottom);
         }
         this.bitmap = globalBitmap;
         this.width = this.bitmap.getWidth();
