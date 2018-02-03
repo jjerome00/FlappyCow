@@ -9,9 +9,9 @@
 
     <!-- Remove the following permissions, if you don't want ads -->
         <!-- Used to request banner and interstitial ads. -->
-        <uses-permission android:name="android.permission.INTERNET" />
+        <!--<uses-permission android:name="android.permission.INTERNET" />-->
         <!-- Used to avoid sending an ad request if there is no connectivity. -->
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
     <!-- Remove the lines above, if you don't want ads -->
     
     <application
@@ -22,7 +22,7 @@
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         
         <!-- For Google Play Services -->       
-        <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="@string/app_id" />
+        <!--<meta-data android:name="com.google.android.gms.games.APP_ID" android:value="@string/app_id" />-->
         
         <activity
             android:name=".MainActivity"
@@ -56,14 +56,14 @@
         </activity>
         
         <!-- Remove the lines below, if you don't want ads -->
-            <meta-data android:name="com.google.android.gms.version"
-                android:value="@integer/google_play_services_version"/>
-            <activity
-                android:name="com.google.android.gms.ads.AdActivity"
-                android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
-            
-            <activity android:name="com.sec.android.ad.AdActivity" 
-                android:configChanges="keyboardHidden|orientation|screenSize"/>
+            <!--<meta-data android:name="com.google.android.gms.version"-->
+                <!--android:value="@integer/google_play_services_version"/>-->
+            <!--<activity-->
+                <!--android:name="com.google.android.gms.ads.AdActivity"-->
+                <!--android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>-->
+            <!---->
+            <!--<activity android:name="com.sec.android.ad.AdActivity" -->
+                <!--android:configChanges="keyboardHidden|orientation|screenSize"/>-->
         <!-- Remove the lines above, if you don't want ads -->
         
     </application>
