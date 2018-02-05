@@ -47,7 +47,7 @@ public class MainActivity extends BaseGameActivity {
     
     public void logout() {
         signOut();
-        view.setOnline(false);
+//        view.setOnline(false);
         view.invalidate();
     }
     
@@ -67,7 +67,6 @@ public class MainActivity extends BaseGameActivity {
      */
     private void setSocket(){
         SharedPreferences saves = this.getSharedPreferences(medaille_save, 0);
-        view.setSocket(saves.getInt(medaille_key, 0));
         view.invalidate();
     }
 
@@ -82,13 +81,11 @@ public class MainActivity extends BaseGameActivity {
 
     @Override
     public void onSignInFailed() {
-        Toast.makeText(this, "You're not logged in", Toast.LENGTH_SHORT).show();
+        //noop
     }
 
     @Override
     public void onSignInSucceeded() {
-        Toast.makeText(this, "You're logged in", Toast.LENGTH_SHORT).show();
-        view.setOnline(true);
         view.invalidate();
         if(AccomplishmentBox.isOnline(this)){
             AccomplishmentBox.getLocal(this).submitScore(this, getApiClient());
