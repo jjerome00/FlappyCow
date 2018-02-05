@@ -10,11 +10,12 @@ package com.quchen.flappycow;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-public class MainActivity extends BaseGameActivity {
+public class MainActivity extends Activity {
     
     /** Name of the SharedPreference that saves the medals */
     public static final String medaille_save = "medaille_save";
@@ -37,16 +38,16 @@ public class MainActivity extends BaseGameActivity {
         setSocket();
     }
 
-    public GoogleApiClient getApiClient(){
-        return mHelper.getApiClient();
-    }
+//    public GoogleApiClient getApiClient(){
+//        return mHelper.getApiClient();
+//    }
     
-    public void login() {
-        beginUserInitiatedSignIn();
-    }
+//    public void login() {
+//        beginUserInitiatedSignIn();
+//    }
     
     public void logout() {
-        signOut();
+//        signOut();
 //        view.setOnline(false);
         view.invalidate();
     }
@@ -78,18 +79,18 @@ public class MainActivity extends BaseGameActivity {
         super.onResume();
         setSocket();
     }
-
-    @Override
-    public void onSignInFailed() {
-        //noop
-    }
-
-    @Override
-    public void onSignInSucceeded() {
-        view.invalidate();
-        if(AccomplishmentBox.isOnline(this)){
-            AccomplishmentBox.getLocal(this).submitScore(this, getApiClient());
-        }
-    }
+//
+//    @Override
+//    public void onSignInFailed() {
+//        //noop
+//    }
+//
+//    @Override
+//    public void onSignInSucceeded() {
+//        view.invalidate();
+//        if(AccomplishmentBox.isOnline(this)){
+//            AccomplishmentBox.getLocal(this).submitScore(this, getApiClient());
+//        }
+//    }
     
 }

@@ -281,7 +281,7 @@ public class GameView extends SurfaceView{
      */
     private void createPowerUp(){
 
-        if(game.accomplishmentBox.points == 3) {
+        if(game.accomplishmentBox.points == 10) {
 //            game.handler.sendMessage(Message.obtain(game.handler,1,R.string.toast_achievement_toastification, MyHandler.SHOW_TOAST));
             gameOver();
         }
@@ -394,11 +394,11 @@ public class GameView extends SurfaceView{
      */
     public void changeToNyanCat(){
         game.accomplishmentBox.achievement_toastification = true;
-        if(game.getApiClient().isConnected()){
-            Games.Achievements.unlock(game.getApiClient(), getResources().getString(R.string.achievement_toastification));
-        }else{
-            game.handler.sendMessage(Message.obtain(game.handler,1,R.string.toast_achievement_toastification, MyHandler.SHOW_TOAST));
-        }
+//        if(game.getApiClient().isConnected()){
+//            Games.Achievements.unlock(game.getApiClient(), getResources().getString(R.string.achievement_toastification));
+//        }else{
+//            game.handler.sendMessage(Message.obtain(game.handler,1,R.string.toast_achievement_toastification, MyHandler.SHOW_TOAST));
+//        }
         
         PlayableCharacter tmp = this.player;
         this.player = new NyanCat(this, game);
