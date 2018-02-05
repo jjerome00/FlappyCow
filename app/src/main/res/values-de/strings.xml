@@ -28,4 +28,8 @@
     <string name="toast_achievement_bronze">Achievement unlocked: Bronze</string>
     <string name="toast_achievement_silver">Achievement unlocked: Silver</string>
     <string name="toast_achievement_gold">Achievement unlocked: Gold</string>
+
+    <string name="about_text">\nEine alberne Modifikation eines Flappy Bird Clones, der unmöglich zu verlieren ist.\n\nAlles Lob geht an den ursprünglichen Entwickler Lars Harmsen. Ich habe nur seinen Code geändert, manchmal schlecht.\n\nNyan Cat wurde von Christopher Torres gezeichnet und もももも remixte die Musik von daniwell.  \n\nhttps://github.com/jjerome00/FlappyGhost\n</string>
+    <string name="you_win">DU GEWINNST!</string>
+    <string name="more_music">MEHR MUSIK!</string>
 </resources>

@@ -28,4 +28,8 @@
     <string name="toast_achievement_bronze">Achievement unlocked: Bronze</string>
     <string name="toast_achievement_silver">Achievement unlocked: Silver</string>
     <string name="toast_achievement_gold">Achievement unlocked: Gold</string>
+
+    <string name="about_text">\nフラッフィーバードクローンの愚かな改変は、失うことは不可能です。\n\nすべてのクレジットは元の開発者、Lars Harmsenに送られます。 私がしたことは、コードが変更されただけだった。\n\nニャン・キャットはクリストファー・トーレスの手によって制作され、ダンウェルの音楽もリミックスされました。  \n\nhttps://github.com/jjerome00/FlappyGhost\n</string>
+    <string name="you_win">あなた勝つ！</string>
+    <string name="more_music">もっと音楽！</string>
 </resources>

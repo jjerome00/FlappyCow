@@ -32,6 +32,7 @@
     <string name="toast_achievement_silver">Achievement unlocked: Silver</string>
     <string name="toast_achievement_gold">Achievement unlocked: Gold</string>
 
+    <string name="about_text">\nA silly modification of a Flappy Bird clone that\'s impossible to lose.\n\nAll credit goes to the original developer, Lars Harmsen.  All I did was change his code, sometimes poorly.\n\nNyan Cat was drawn by Christopher Torres and もももも remixed the music by daniwell.  \n\nhttps://github.com/jjerome00/FlappyGhost\n</string>
     <string name="you_win">YOU WIN!</string>
     <string name="more_music">MOAR MUSIC!</string>
 </resources>
