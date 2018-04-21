@@ -8,4 +8,5 @@ Flappy Ghost
 - make game impossible to lose
 - came up with creative way to avoid dying
 
+Click on image to see a video of gameplay (youtube):   
 [![Flappy Ghost video](https://img.youtube.com/vi/gMiZGcjPErI/0.jpg)](http://www.youtube.com/watch?v=gMiZGcjPErI)
